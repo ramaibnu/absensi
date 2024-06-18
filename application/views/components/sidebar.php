@@ -130,6 +130,18 @@
                                 Karyawan</a></li>
                     </ul>
                 </li>
+                <li class="nav-item pcoded-hasmenu <?=
+                                                    $this->uri->segment(1) == 'set_plan' ||
+                                                        $this->uri->segment(1) == 'plan' ? 'active pcoded-trigger' : '' ?>"><a href="javascript:void(0);" class="nav-link"><span class="pcoded-micon"><i class="feather icon-calendar"></i></span><span class="pcoded-mtext">Kalender Roster</span></a>
+                    <ul class="pcoded-submenu">
+                        <li <?=
+                            $this->uri->segment(1) == 'plan' ? 'class="active"' : '' ?>><a href="<?= base_url('plan') ?>">Data Plan Kehadiran</a></li>
+                        <li <?=
+                            $this->uri->segment(1) == 'set_plan' ? 'class="active"' : '' ?>><a href="<?= base_url('set_plan') ?>">Setting Plan Kehadiran</a></li>
+                        <li <?=
+                            $this->uri->segment(1) == 'pengajuan' ? 'class="active"' : '' ?>><a href="<?= base_url('pengajuan') ?>">Data Pengajuan</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item pcoded-hasmenu <?= $this->uri->segment(1) == 'pelanggaran' ||
                                                         $this->uri->segment(1) == 'tambah_pelanggaran' ||
                                                         $this->uri->segment(1) == 'detail_pelanggaran' ||

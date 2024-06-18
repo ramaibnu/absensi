@@ -461,7 +461,7 @@ class Karyawan_api extends MY_Controller
         } else {
             $dataSidebar['nama_per'] = "PT UNGGUL";
         }
-        
+
         $this->load->view('components/sidebar', $dataSidebar);
 
         // Navbar

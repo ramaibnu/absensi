@@ -61,6 +61,16 @@
         .parsley-error {
             color: red;
         }
+
+        .buttons-excel {
+            background-color: green !important;
+            color: white !important;
+        }
+
+        .buttons-csv {
+            background-color: goldenrod !important;
+            color: white !important;
+        }
     </style>
 </head>
 

@@ -7,7 +7,38 @@
     new DataTable('#example', {
         layout: {
             topStart: {
-                buttons: ['excel', 'csv']
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Export Excel',
+                        text: '<i class="fas fa-file-excel"></i>',
+                        titleAttr: 'Excel'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        title: 'Export CSV',
+                        text: '<i class="fas fa-file-csv"></i>',
+                        titleAttr: 'CSV'
+                    },
+                ]
+            }
+        }
+    });
+    new DataTable('#example2', {
+        layout: {
+            topStart: {
+                buttons: [{
+                        extend: 'excelHtml5',
+                        title: 'Export Excel',
+                        text: '<i class="fas fa-file-excel"></i>',
+                        titleAttr: 'Excel'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        title: 'Export CSV',
+                        text: '<i class="fas fa-file-csv"></i>',
+                        titleAttr: 'CSV'
+                    },
+                ]
             }
         }
     });

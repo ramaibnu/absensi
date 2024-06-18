@@ -169,3 +169,18 @@ $route['download_pelanggaran'] = 'Download_data/pelanggaran';
 
 // Absensi
 $route['get_absensi'] = 'Absensi/get_absensi';
+$route['kal_absensi'] = 'Absensi/kalabsen';
+
+// Jadwal
+$route['set_plan'] = 'Jadwal/set_plan';
+$route['plan'] = 'Jadwal/plan';
+$route['updjadwal'] = 'Jadwal/updjadwal';
+
+// Export Import
+$route['export'] = 'Exportimport/export';
+$route['import'] = 'Exportimport/import';
+
+// Pengajuan
+$route['pengajuan'] = 'Pengajuan/viewpengajuan';
+$route['addpengajuan'] = 'Pengajuan/addpengajuan';
+$route['updpengajuan/(:num)'] = 'Pengajuan/updpengajuan/$1';
