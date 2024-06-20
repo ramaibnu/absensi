@@ -58,6 +58,8 @@ class M_Absensi extends CI_Model
         $this->db->from('tb_att as a');
         $this->db->join('tb_karyawan as e', 'e.no_nik=a.id_finger', 'left');
         $this->db->join('tb_personal as f', 'f.id_personal=e.id_personal', 'left');
+        $this->db->join('tb_posisi as g', 'g.id_posisi=e.id_posisi','left');
+        $this->db->join('tb_depart as h', 'h.id_depart=e.id_depart');
         $this->db->order_by('a.datetime', 'ASC');
         return $this->db->get();
     }
@@ -66,9 +68,11 @@ class M_Absensi extends CI_Model
         $this->db->select('*,a.nik as nika,a.date as datea');
         $this->db->from('tb_jadwal as a');
         $this->db->join('tb_attfix as c', 'c.nik=a.nik and c.date=a.date', 'left');
-        $this->db->join('tb_shift as d', 'd.kode_shift=a.kode_shift', 'left');
+        $this->db->join('tb_ket_kerja as d', 'd.kode_ket_kerja=a.kode_shift', 'left');
         $this->db->join('tb_karyawan as e', 'e.no_nik=a.nik', 'left');
         $this->db->join('tb_personal as f', 'f.id_personal=e.id_personal', 'left');
+        $this->db->join('tb_posisi as g', 'g.id_posisi=e.id_posisi','left');
+        $this->db->join('tb_depart as h', 'h.id_depart=e.id_depart');
         $this->db->order_by('a.date', 'ASC');
         return $this->db->get();
     }

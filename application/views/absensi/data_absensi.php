@@ -69,12 +69,14 @@
                                                 <th style="text-align:center;width:1%;">No.</th>
                                                 <th style="text-align:center;">NIK</th>
                                                 <th style="text-align:center;">Nama</th>
+                                                <th style="text-align:center;">Departemen</th>
+                                                <th style="text-align:center;">Posisi</th>
                                                 <th style="text-align:center;">Tgl. Absensi</th>
                                                 <th style="text-align:center;">Jam Masuk</th>
                                                 <th style="text-align:center;">Jam Keluar</th>
                                                 <th style="text-align:center;">Total Jam</th>
                                                 <th style="text-align:center;">Ket</th>
-                                                <th style="text-align:center;">Jadwal Plan</th>
+                                                <th style="text-align:center;">Plan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -87,12 +89,15 @@
                                                     <td class="text-center"><?= $no++; ?></td>
                                                     <td class="text-left"><?= $a->no_nik; ?></td>
                                                     <td class="text-left"><?= $a->nama_lengkap; ?></td>
+                                                    <td class="text-left"><?= $a->depart; ?></td>
+                                                    <td class="text-left"><?= $a->posisi; ?></td>
                                                     <td class="text-center"><?= $a->datea; ?></td>
                                                     <td><?= isset($a->in) && $a->in !== '00:00:00' ? $a->in : '-';  ?></td>
                                                     <td><?= isset($a->out) && $a->out !== '00:00:00' ? $a->out : '-';  ?></td>
                                                     <td class="text-left"><?= $df->format("%h Jam %i Menit") ?></td>
-                                                    <td class="text-left"><?= isset($a->in) && $a->in !== '00:00:00' || isset($a->out) && $a->out !== '00:00:00' ? 'Masuk' : 'Tidak Masuk'; ?></td>
-                                                    <td class="text-left"><?= $a->nama_shift; ?></td>
+                                                    <!-- <td class="text-left"><?= isset($a->in) && $a->in !== '00:00:00' || isset($a->out) && $a->out !== '00:00:00' ? 'Masuk' : 'Tidak Masuk'; ?></td> -->
+                                                    <td class="text-left"><?= $a->ket_kerja; ?></td>
+                                                    <td class="text-center"><?= $a->kode_ket_kerja; ?></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -145,6 +150,8 @@
                                                 <th style="text-align:center;width:1%;">No.</th>
                                                 <th style="text-align:center;">NIK</th>
                                                 <th style="text-align:center;">Nama</th>
+                                                <th style="text-align:center;">Departemen</th>
+                                                <th style="text-align:center;">Posisi</th>
                                                 <th style="text-align:center;">Date Time</th>
                                             </tr>
                                         </thead>
@@ -157,6 +164,8 @@
                                                     <td class="text-center"><?= $no++; ?></td>
                                                     <td class="text-left"><?= !empty($a->no_nik) ? $a->no_nik : "-"  ?></td>
                                                     <td class="text-left"><?= !empty($a->nama_lengkap) ? $a->nama_lengkap : "-"; ?></td>
+                                                    <td class="text-left"><?= !empty($a->depart) ? $a->depart : "-"; ?></td>
+                                                    <td class="text-left"><?= !empty($a->posisi) ? $a->posisi : "-"; ?></td>
                                                     <td class="text-center"><?= $a->datetime; ?></td>
                                                 </tr>
                                             <?php } ?>

@@ -133,8 +133,10 @@
                                                             <td class="text-center"><button title="Day shift" class="btn btn-sm btn-warning"><i class="fas fa-sun"></i></button></td>
                                                         <?php } elseif (isset($a[$currentDateValue]) && $a[$currentDateValue] == 'N') { ?>
                                                             <td class="text-center"><button title="Night shift" class="btn btn-sm btn-primary"><i class="fas fa-moon"></i></button></td>
-                                                        <?php } elseif (isset($a[$currentDateValue]) && $a[$currentDateValue] == 'O') { ?>
+                                                        <?php } elseif (isset($a[$currentDateValue]) && $a[$currentDateValue] == 'OFF') { ?>
                                                             <td class="text-center">OFF</td>
+                                                        <?php } elseif (isset($a[$currentDateValue])) { ?>
+                                                            <td class="text-center"><?= $a[$currentDateValue] ?></td>
                                                         <?php } else { ?>
                                                             <td class="text-center">-</td>
                                                         <?php } ?>

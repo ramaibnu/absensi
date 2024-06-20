@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/assets/others/jquery-ui.css">
     <!-- Sweetalert -->
     <link rel='stylesheet' href='<?= base_url(); ?>assets/assets/css/sweetalert2.min.css'>
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
     <script src="<?= base_url(); ?>assets/assets/js/sweetalert2.all.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css"> -->
+     <link rel="stylesheet" href="<?= base_url('assets/others/css/dataTables.css') ?>">
+     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css"> -->
+     <link rel="stylesheet" href="<?= base_url('assets/others/css/buttons.dataTables.css') ?>">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/assets/css/style.css" />
