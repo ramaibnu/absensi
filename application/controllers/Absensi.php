@@ -93,7 +93,7 @@ class Absensi extends MY_Controller
                 $schinstart = $jadwal->jam_masuk;
                 $schinend = (new DateTime($schinstart))->modify('-5 hours')->format('H:i:s');
                 $schoutstart = $jadwal->jam_pulang;
-                $schoutend = (new DateTime($schoutstart))->modify('-5 hours')->format('H:i:s');
+                $schoutend = (new DateTime($schoutstart))->modify('+5 hours')->format('H:i:s');
 
                 $in = $this->M_Absensi->get_absenin($a->id_finger, $date, $schinstart, $schinend)->row();
                 if ($jadwal->kode_shift == 'N') {

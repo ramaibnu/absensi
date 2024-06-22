@@ -89,8 +89,8 @@ class M_Absensi extends CI_Model
     {
         $this->db->where('id_finger', $finger);
         $this->db->where('date(datetime)', $date);
-        $this->db->where('datetime <=', "$date $schoutstart");
-        $this->db->where('datetime >=', "$date $schoutend");
+        $this->db->where('datetime >=', "$date $schoutstart");
+        $this->db->where('datetime <=', "$date $schoutend");
         $this->db->order_by('datetime', 'ASC');
         return $this->db->get('tb_att');
     }
