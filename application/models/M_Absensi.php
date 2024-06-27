@@ -53,17 +53,19 @@ class M_Absensi extends CI_Model
         $this->db->order_by('datetime', 'ASC');
         return $this->db->get('tb_att');
     }
-    function get_absensifinger()
+    function get_absensifinger($dstart, $dend)
     {
         $this->db->from('tb_att as a');
         $this->db->join('tb_karyawan as e', 'e.no_nik=a.id_finger', 'left');
         $this->db->join('tb_personal as f', 'f.id_personal=e.id_personal', 'left');
-        $this->db->join('tb_posisi as g', 'g.id_posisi=e.id_posisi','left');
+        $this->db->join('tb_posisi as g', 'g.id_posisi=e.id_posisi', 'left');
         $this->db->join('tb_depart as h', 'h.id_depart=e.id_depart');
-        $this->db->order_by('a.datetime', 'ASC');
+        $this->db->where('a.datetime >=', $dstart);
+        $this->db->where('a.datetime <=', $dend);
+        $this->db->order_by('a.datetime', 'DESC');
         return $this->db->get();
     }
-    function get_absensifix()
+    function get_absensifix($dstart, $dend)
     {
         $this->db->select('*,a.nik as nika,a.date as datea');
         $this->db->from('tb_jadwal as a');
@@ -71,9 +73,11 @@ class M_Absensi extends CI_Model
         $this->db->join('tb_ket_kerja as d', 'd.kode_ket_kerja=a.kode_shift', 'left');
         $this->db->join('tb_karyawan as e', 'e.no_nik=a.nik', 'left');
         $this->db->join('tb_personal as f', 'f.id_personal=e.id_personal', 'left');
-        $this->db->join('tb_posisi as g', 'g.id_posisi=e.id_posisi','left');
+        $this->db->join('tb_posisi as g', 'g.id_posisi=e.id_posisi', 'left');
         $this->db->join('tb_depart as h', 'h.id_depart=e.id_depart');
-        $this->db->order_by('a.date', 'ASC');
+        $this->db->where('a.date >=', $dstart);
+        $this->db->where('a.date <=', $dend);
+        $this->db->order_by('a.date', 'DESC');
         return $this->db->get();
     }
     function get_absenin($finger, $date, $schinstart, $schinend)

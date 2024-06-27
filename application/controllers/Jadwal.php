@@ -81,7 +81,8 @@ class Jadwal extends MY_Controller
             $row = $this->M_Jadwal->get_jadwalkary($a->no_nik, $start, $end)->result();
             $x = 1;
             foreach ($row as $r) {
-                $dt[$r->date] = $r->kode_shift;
+                $dt[$r->date][0] = $r->kode_shift;
+                $dt[$r->date][1] = $r->icon_ket_kerja;
                 $x++;
             }
             $ar[] = $dt;

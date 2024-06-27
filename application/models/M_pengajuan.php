@@ -5,18 +5,20 @@ class M_pengajuan extends CI_Model
 {
     function get_pengajuanall()
     {
-        $this->db->select('a.*,b.*,c.*,d.*,e.*,c.nama_lengkap as nm,e.nama_lengkap as nama');
+        $this->db->select('a.*,b.*,c.*,d.*,e.*,f.*,c.nama_lengkap as nm,e.nama_lengkap as nama');
         $this->db->from('tb_pengajuan as a');
         $this->db->join('tb_karyawan as b', 'b.no_nik=a.nik');
         $this->db->join('tb_personal as c', 'c.id_personal=b.id_personal');
         $this->db->join('tb_karyawan as d', 'd.no_nik=a.atasan', 'left');
         $this->db->join('tb_personal as e', 'e.id_personal=d.id_personal', 'left');
+        $this->db->join('tb_depart as f', 'f.id_depart=b.id_depart');
         return $this->db->get();
     }
     function get_karyall()
     {
         $this->db->from('tb_karyawan as a');
-        $this->db->join('tb_personal as c', 'c.id_personal=a.id_personal');
+        $this->db->join('tb_personal as b', 'b.id_personal=a.id_personal');
+        $this->db->join('tb_depart as c', 'c.id_depart=a.id_depart');
         return $this->db->get();
     }
     function add_pengajuan($x)

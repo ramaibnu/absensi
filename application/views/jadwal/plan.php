@@ -129,14 +129,8 @@
                                                     <?php
                                                     while ($current <= $end) { ?>
                                                         <?php $currentDateValue = $current->format('Y-m-d'); ?>
-                                                        <?php if (isset($a[$currentDateValue]) && $a[$currentDateValue] == 'D') { ?>
-                                                            <td class="text-center"><button title="Day shift" class="btn btn-sm btn-warning"><i class="fas fa-sun"></i></button></td>
-                                                        <?php } elseif (isset($a[$currentDateValue]) && $a[$currentDateValue] == 'N') { ?>
-                                                            <td class="text-center"><button title="Night shift" class="btn btn-sm btn-primary"><i class="fas fa-moon"></i></button></td>
-                                                        <?php } elseif (isset($a[$currentDateValue]) && $a[$currentDateValue] == 'OFF') { ?>
-                                                            <td class="text-center">OFF</td>
-                                                        <?php } elseif (isset($a[$currentDateValue])) { ?>
-                                                            <td class="text-center"><?= $a[$currentDateValue] ?></td>
+                                                        <?php if (isset($a[$currentDateValue])) { ?>
+                                                            <td class="text-center"><?= $a[$currentDateValue][1] ?></td>
                                                         <?php } else { ?>
                                                             <td class="text-center">-</td>
                                                         <?php } ?>

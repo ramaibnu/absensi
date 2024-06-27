@@ -73,10 +73,10 @@
                                             </div>
                                             <div class="modal-body">
                                                 <label for="">Nama Pengaju</label>
-                                                <select name="pengaju" id="" class="form-control">
+                                                <select name="pengaju" id="" class="form-control selectpicker" data-live-search="true">
                                                     <option value="">--Pilih Nama--</option>
                                                     <?php foreach ($kary as $a) { ?>
-                                                        <option value="<?= $a->no_nik ?>"><?= $a->nama_lengkap; ?></option>
+                                                        <option value="<?= $a->no_nik ?>"><?= $a->depart; ?> | <?= $a->nama_lengkap; ?></option>
                                                     <?php } ?>
                                                 </select>
                                                 <label for="">Tipe</label>
@@ -99,10 +99,10 @@
                                                     </div>
                                                 </div>
                                                 <label for="">Nama Atasan</label>
-                                                <select name="atasan" id="" class="form-control">
+                                                <select name="atasan" id="" class="form-control selectpicker" data-live-search="true">
                                                     <option value="">--Pilih Nama--</option>
                                                     <?php foreach ($kary as $a) { ?>
-                                                        <option value="<?= $a->no_nik ?>"><?= $a->nama_lengkap; ?></option>
+                                                        <option value="<?= $a->no_nik ?>"><?= $a->depart; ?> | <?= $a->nama_lengkap; ?></option>
                                                     <?php } ?>
                                                 </select>
                                                 <label for="">Keterangan</label>
@@ -118,12 +118,13 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table id="example" class="table table-striped table-bordered table-hover text-black" style="width:100%;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-                                    <thead>
+                                <table id="example" class="table-striped text-black display table-bordered" style="width:100%;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:0.9em">
+                                    <thead style="background-color:lightgrey">
                                         <tr class="font-weight-boldtext-white">
                                             <th>Nama</th>
+                                            <th>Depart</th>
                                             <th>Tipe</th>
-                                            <th>Date</th>
+                                            <th style="width: 10%;">Date</th>
                                             <th>Time Start</th>
                                             <th>Time End</th>
                                             <th>Atasan</th>
@@ -136,6 +137,7 @@
                                         <?php foreach ($data as $a) { ?>
                                             <tr>
                                                 <td><?= $a->nm; ?></td>
+                                                <td><?= $a->depart; ?></td>
                                                 <?php if ($a->tipe == 1) { ?>
                                                     <td>SPL</td>
                                                 <?php } elseif ($a->tipe == 2) { ?>

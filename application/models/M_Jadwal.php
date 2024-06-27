@@ -40,10 +40,12 @@ class M_Jadwal extends CI_Model
     }
     function get_jadwalkary($nik, $start, $end)
     {
+        $this->db->from('tb_jadwal as a');
+        $this->db->join('tb_ket_kerja as b', 'b.kode_ket_kerja=a.kode_shift', 'left');
         $this->db->where('nik', $nik);
         $this->db->where('date >=', $start);
         $this->db->where('date <=', $end);
-        return $this->db->get('tb_jadwal');
+        return $this->db->get();
     }
     function get_jadwalkarytest($start, $end)
     {

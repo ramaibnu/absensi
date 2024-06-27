@@ -57,26 +57,39 @@
                         <div class="mt-3">
                             <div class="mb-2">
                                 <a href="<?= base_url('kal_absensi'); ?>" class="btn btn-primary font-weight-bold"><i class="fas fa-sync-alt"></i> Kalkulasi Absensi</a>
+                                <form action="<?= base_url('absensi') ?>" method="post">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <input type="date" name="start" id="" class="form-control">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="date" name="end" value="<?= date('Y-m-d') ?>" id="" class="form-control">
+                                        </div>
+                                        <div class="col-md-3 mt-2">
+                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-table"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
                                 <!-- <a id="addbtn" href="<?= base_url('tambah_golongan'); ?>" class="btn btn-success font-weight-bold"><i class="fas fa-plus"></i> Tambah Data</a> -->
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-striped table-bordered table-hover text-black" style="width:100%;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-                                        <thead>
-                                            <tr class="font-weight-boldtext-white">
-                                                <th style="text-align:center;width:1%;">No.</th>
+                                    <!-- <table id="example" class="table table-striped table-bordered table-hover text-black" style="width:100%;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:10px;"> -->
+                                    <table id="example" class="table-striped table-bordered text-black display" style="width:100%;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:0.9em">
+                                        <thead style="background-color:lightgrey">
+                                            <tr class=" font-weight-boldtext-white">
+                                                <th style="text-align:center;width:1%;">#</th>
                                                 <th style="text-align:center;">NIK</th>
                                                 <th style="text-align:center;">Nama</th>
-                                                <th style="text-align:center;">Departemen</th>
+                                                <th style="text-align:center; width:5%">Depart</th>
                                                 <th style="text-align:center;">Posisi</th>
-                                                <th style="text-align:center;">Tgl. Absensi</th>
+                                                <th style="text-align:center; width:11%">Tanggal</th>
                                                 <th style="text-align:center;">Jam Masuk</th>
                                                 <th style="text-align:center;">Jam Keluar</th>
-                                                <th style="text-align:center;">Total Jam</th>
+                                                <th style="text-align:center;">Total</th>
                                                 <th style="text-align:center;">Ket</th>
-                                                <th style="text-align:center;">Plan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -89,7 +102,7 @@
                                                     <td class="text-center"><?= $no++; ?></td>
                                                     <td class="text-left"><?= $a->no_nik; ?></td>
                                                     <td class="text-left"><?= $a->nama_lengkap; ?></td>
-                                                    <td class="text-left"><?= $a->depart; ?></td>
+                                                    <td class="text-left"><?= $a->kd_depart; ?></td>
                                                     <td class="text-left"><?= $a->posisi; ?></td>
                                                     <td class="text-center"><?= $a->datea; ?></td>
                                                     <td><?= isset($a->in) && $a->in !== '00:00:00' ? $a->in : '-';  ?></td>
@@ -97,7 +110,6 @@
                                                     <td class="text-left"><?= $df->format("%h Jam %i Menit") ?></td>
                                                     <!-- <td class="text-left"><?= isset($a->in) && $a->in !== '00:00:00' || isset($a->out) && $a->out !== '00:00:00' ? 'Masuk' : 'Tidak Masuk'; ?></td> -->
                                                     <td class="text-left"><?= $a->ket_kerja; ?></td>
-                                                    <td class="text-center"><?= $a->kode_ket_kerja; ?></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -144,8 +156,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
-                                    <table id="example2" class="table table-striped table-bordered table-hover text-black" style="width:100%;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-                                        <thead>
+                                    <table id="example2" class="table-striped table-bordered text-black display" style="width:100%;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size:0.9em">
+                                        <thead style="background-color:lightgrey">
                                             <tr class="font-weight-boldtext-white">
                                                 <th style="text-align:center;width:1%;">No.</th>
                                                 <th style="text-align:center;">NIK</th>

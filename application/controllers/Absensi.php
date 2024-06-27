@@ -11,6 +11,15 @@ class Absensi extends MY_Controller
 
     function index()
     {
+        $dstart = date('2000-01-01');
+        $dend = date('Y-m-d');
+
+        $datea = $this->input->post('start');
+        $dateb = $this->input->post('end');
+        if (isset($datea) && isset($dateb)) {
+            $dstart = $datea;
+            $dend = $dateb;
+        }
         // Header
         $this->load->view('components/header');
 
@@ -23,8 +32,8 @@ class Absensi extends MY_Controller
         $this->load->view('components/navbar', $dataNavbar);
 
         // Main
-        $data['absenfinger'] = $this->M_Absensi->get_absensifinger()->result();
-        $data['absen'] = $this->M_Absensi->get_absensifix()->result();
+        $data['absenfinger'] = $this->M_Absensi->get_absensifinger($dstart, $dend)->result();
+        $data['absen'] = $this->M_Absensi->get_absensifix($dstart, $dend)->result();
         // foreach ($absenall as $a) {
         //     $date = date('Y-m-d', strtotime($a->datetime));
         //     $jadwal = $this->M_Absensi->get_jadwalshift($a->id_finger, $date)->row();
