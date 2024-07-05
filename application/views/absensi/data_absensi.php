@@ -81,15 +81,16 @@
                                         <thead style="background-color:lightgrey">
                                             <tr class=" font-weight-boldtext-white">
                                                 <th style="text-align:center;width:1%;">#</th>
-                                                <th style="text-align:center;">NIK</th>
+                                                <th style="text-align:center; width:5%">NIK</th>
                                                 <th style="text-align:center;">Nama</th>
-                                                <th style="text-align:center; width:5%">Depart</th>
+                                                <th style="text-align:center; width:5%">DPT</th>
                                                 <th style="text-align:center;">Posisi</th>
                                                 <th style="text-align:center; width:11%">Tanggal</th>
                                                 <th style="text-align:center;">Jam Masuk</th>
                                                 <th style="text-align:center;">Jam Keluar</th>
-                                                <th style="text-align:center;">Total</th>
-                                                <th style="text-align:center;">Ket</th>
+                                                <th style="text-align:center;">Value</th>
+                                                <th style="text-align:center; width:5%">Ket</th>
+                                                <th style="text-align:center; width:5%">Indikasi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -105,11 +106,26 @@
                                                     <td class="text-left"><?= $a->kd_depart; ?></td>
                                                     <td class="text-left"><?= $a->posisi; ?></td>
                                                     <td class="text-center"><?= $a->datea; ?></td>
-                                                    <td><?= isset($a->in) && $a->in !== '00:00:00' ? $a->in : '-';  ?></td>
-                                                    <td><?= isset($a->out) && $a->out !== '00:00:00' ? $a->out : '-';  ?></td>
-                                                    <td class="text-left"><?= $df->format("%h Jam %i Menit") ?></td>
-                                                    <!-- <td class="text-left"><?= isset($a->in) && $a->in !== '00:00:00' || isset($a->out) && $a->out !== '00:00:00' ? 'Masuk' : 'Tidak Masuk'; ?></td> -->
+                                                    <td><?= isset($a->in) && $a->in != '00:00:00' ? $a->in : '-';  ?></td>
+                                                    <td><?= isset($a->out) && $a->out != '00:00:00' ? $a->out : '-';  ?></td>
+                                                    <td class="text-left"><?= $df->format("%h.%i") ?></td>
                                                     <td class="text-left"><?= $a->ket_kerja; ?></td>
+                                                    <?php
+                                                    if ($a->in && $a->out) {
+                                                        if ($a->in == '00:00:00' && $a->out != '00:00:00') {
+                                                            $ind = 'Tidak Ada Jam Masuk';
+                                                        } elseif ($a->out == '00:00:00' && $a->in != '00:00:00') {
+                                                            $ind = 'Tidak Ada Jam Pulang';
+                                                        } elseif ($a->in != '00:00:00' && $a->out != '00:00:00') {
+                                                            $ind = 'Hadir';
+                                                        } elseif ($a->in == '00:00:00' && $a->out == '00:00:00') {
+                                                            $ind = 'Tidak Hadir';
+                                                        }
+                                                    } else {
+                                                        $ind = 'Tidak Hadir';
+                                                    }
+                                                    ?>
+                                                    <td><?= $ind; ?></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
