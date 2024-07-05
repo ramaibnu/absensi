@@ -63,6 +63,7 @@ class M_Absensi extends CI_Model
         $this->db->where('a.datetime >=', $dstart);
         $this->db->where('a.datetime <=', $dend);
         $this->db->order_by('a.datetime', 'DESC');
+        $this->db->group_by('a.datetime');
         return $this->db->get();
     }
     function get_absensifix($dstart, $dend)
