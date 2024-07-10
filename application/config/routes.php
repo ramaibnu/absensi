@@ -167,6 +167,7 @@ $route['server_error'] = 'Error_pages/page_error';
 $route['download_karyawan'] = 'Download_data/karyawan';
 $route['download_pelanggaran'] = 'Download_data/pelanggaran';
 
+// PENAMBAHAN
 // Absensi
 $route['get_absensi'] = 'Absensi/get_absensi';
 $route['kal_absensi'] = 'Absensi/kalabsen';
@@ -184,3 +185,6 @@ $route['import'] = 'Exportimport/import';
 $route['pengajuan'] = 'Pengajuan/viewpengajuan';
 $route['addpengajuan'] = 'Pengajuan/addpengajuan';
 $route['updpengajuan/(:num)'] = 'Pengajuan/updpengajuan/$1';
+
+// Karyawan
+$route['viewkaryawan'] = 'Karyawan/viewkaryawan';
