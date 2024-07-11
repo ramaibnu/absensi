@@ -28,6 +28,13 @@ class M_Jadwal extends CI_Model
         $this->db->where('nama_lengkap', $nama);
         return $this->db->get();
     }
+    function get_kary_nik($nik)
+    {
+        $this->db->from('tb_personal as a');
+        $this->db->join('tb_karyawan as b', 'b.id_personal=a.id_personal');
+        $this->db->where('no_nik', $nik);
+        return $this->db->get();
+    }
     function get_karyall()
     {
         $this->db->from('tb_personal as a');

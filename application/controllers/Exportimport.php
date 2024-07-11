@@ -33,12 +33,13 @@ class Exportimport extends MY_Controller
         $worksheet->setCellValueByColumnAndRow(1, 2, $depart->depart);
         $worksheet->setCellValueByColumnAndRow(1, 3, $start . ' - ' . $end);
 
-        $worksheet->setCellValueByColumnAndRow(1, 4, 'Nama');
-        $worksheet->setCellValueByColumnAndRow(2, 4, 'Departemen');
-        $worksheet->setCellValueByColumnAndRow(3, 4, 'Posisi');
+        $worksheet->setCellValueByColumnAndRow(1, 4, 'NIK');
+        $worksheet->setCellValueByColumnAndRow(2, 4, 'Nama');
+        $worksheet->setCellValueByColumnAndRow(3, 4, 'Departemen');
+        $worksheet->setCellValueByColumnAndRow(4, 4, 'Posisi');
 
         // Auto size kolom untuk baris 1 sampai 4
-        for ($col = 1; $col <= 3; $col++) {
+        for ($col = 1; $col <= 4; $col++) {
             $worksheet->getColumnDimensionByColumn($col)->setAutoSize(true);
         }
 
@@ -51,7 +52,7 @@ class Exportimport extends MY_Controller
         $endDate = new DateTime($end);
 
         // Inisialisasi indeks kolom
-        $columnIndex = 4;
+        $columnIndex = 5;
 
         // Loop untuk setiap hari dalam bulan ini
         $currentDate = clone $startDate;
@@ -75,9 +76,10 @@ class Exportimport extends MY_Controller
         // Looping Karyawan
         $namaRow = 5; // Mulai baris di bawah header
         foreach ($karyawan as $nama) {
-            $worksheet->setCellValueByColumnAndRow(1, $namaRow, $nama->nama_lengkap);
-            $worksheet->setCellValueByColumnAndRow(2, $namaRow, $depart->depart);
-            $worksheet->setCellValueByColumnAndRow(3, $namaRow, $nama->posisi);
+            $worksheet->setCellValueByColumnAndRow(1, $namaRow, $nama->no_nik);
+            $worksheet->setCellValueByColumnAndRow(2, $namaRow, $nama->nama_lengkap);
+            $worksheet->setCellValueByColumnAndRow(3, $namaRow, $depart->depart);
+            $worksheet->setCellValueByColumnAndRow(4, $namaRow, $nama->posisi);
             $namaRow++;
         }
 
@@ -149,11 +151,10 @@ class Exportimport extends MY_Controller
             }
             $data[] = $rowData;
             if ($index >= 4) {
-                // var_dump($data[$index]);
-                // die;
-                $indshift = 3;
+                $indshift = 4;
+                $x = array();
                 foreach ($period as $dt) {
-                    $kary = $this->M_Jadwal->get_kary_nama($data[$index][0])->row();
+                    $kary = $this->M_Jadwal->get_kary_nik($data[$index][0])->row();
                     $x = array(
                         'nik' => $kary->no_nik,
                         'date' => $dt->format("Y-m-d"),
